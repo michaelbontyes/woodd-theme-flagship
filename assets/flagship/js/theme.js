@@ -3,156 +3,117 @@
  *
  * Includes all JS which is required within all sections of the theme.
  */
+
 window.compass = window.compass || {};
 
 (function( window, $, undefined ) {
 	'use strict';
 
-	var $window   = $( window ),
-		$document = $( document ),
-		$body     = $( 'body' ),
-		compass   = window.compass;
+	var compass = window.compass;
 
 	$.extend( compass, {
 
-		//* Global script initialization
-		globalInit: function() {
-			var $videos = $( '#site-inner' );
-			$body.addClass( 'ontouchstart' in window || 'onmsgesturechange' in window ? 'touch' : 'no-touch' );
-			$document.gamajoAccessibleMenu();
-			$videos.fitVids();
+		//* Skip Link Focus Fix
+		skipLinks: function() {
+			var eventMethod,
+				isWebkit = navigator.userAgent.toLowerCase().indexOf( 'webkit' ) > -1,
+				isOpera  = navigator.userAgent.toLowerCase().indexOf( 'opera' )  > -1,
+				isIe     = navigator.userAgent.toLowerCase().indexOf( 'msie' )   > -1;
+
+			if ( ( isWebkit || isOpera || isIe ) && 'undefined' !== typeof( document.getElementById ) ) {
+				eventMethod = ( window.addEventListener ) ? 'addEventListener' : 'attachEvent';
+				window[ eventMethod ]( 'hashchange', function() {
+					var element = document.getElementById( location.hash.substring( 1 ) );
+
+					if ( element ) {
+						if ( ! /^(?:a|select|input|button|textarea)$/i.test( element.tagName ) ) {
+							element.tabIndex = -1;
+						}
+
+						element.focus();
+					}
+				}, false );
+			}
 		},
 
-		mobileMenu: function() {
+		//* Mobile Menu
+		mobileNav: function() {
 			var menuSelectors = [],
-				menuSide      = $body.hasClass( 'rtl' ) ? 'left' : 'right',
-				name          = 'sidr-main',
-				sidrOpen      = null,
-				sidrClose     = null,
-				siteContainer = $( '#site-container' ),
-				menuButton    = $( '<button type="button" id="responsive-menu-button" class="menu-button" aria-expanded="false"></button>' );
+				menuSide      = 'right';
 
-			if ( 0 !== $( '#menu-primary' ).length ) {
-				menuSelectors.push( '#menu-primary' );
+			if ( $( '#menu-header' ).length ) {
+				menuSelectors.push( '#menu-header' );
 			}
 
-			if ( 0 !== $( '#menu-secondary' ).length ) {
-				menuSelectors.push( '#menu-secondary' );
+			if ( $( '#after-header' ).length ) {
+				menuSelectors.push( '#menu-after-header' );
 			}
 
 			//* End here if we don't have a menu.
-			if ( 0 === menuSelectors.length ) {
+			if ( menuSelectors.length === 0 ) {
 				return;
 			}
 
 			//* Add a responsive menu button.
-			$( '#branding' ).before( menuButton );
+			$( '#branding' ).before( '<button id="responsive-menu-button" class="menu-button" role="button" aria-pressed="false"></button>' );
 
-			sidrOpen = function() {
-				var navEl        = $( '#' + name ),
-					navItems     = $( '#' + name + ' a' ),
-					firstNavItem = navItems.first(),
-					lastNavItem  = navItems.last();
-
-				menuButton.toggleClass( 'activated' ).attr( 'aria-expanded', true );
-
-				siteContainer.on( 'click.CloseSidr', function( event ) {
-					$.sidr( 'close', name );
-					event.preventDefault();
-				});
-
-				// Add some attributes to the menu container.
-				navEl.attr({ role: 'navigation', tabindex: '0' }).focus();
-
-				// When focus is on the menu container.
-				navEl.on( 'keydown.sidrNav', function( event ) {
-					// If it's not the tab key then return.
-					if ( 9 !== event.keyCode ) {
-						return;
-					}
-					// When tabbing forwards and tabbing out of the last link.
-					if ( lastNavItem[0] === event.target && ! event.shiftKey ) {
-						menuButton.focus();
-						return false;
-					// When tabbing backwards and tabbing out of the first link OR the menu container.
-					} else if ( ( firstNavItem[0] === event.target || navEl[0] === event.target ) && event.shiftKey ) {
-						menuButton.focus();
-						return false;
-					}
-				});
-
-				// When focus is on the toggle button.
-				menuButton.on( 'keydown.sidrNav', function( event ) {
-					// If it's not the tab key then return.
-					if ( 9 !== event.keyCode ) {
-						return;
-					}
-					// when tabbing forwards
-					if ( menuButton[0] === event.target && ! event.shiftKey ) {
-						navEl.focus();
-						return false;
-					}
-				});
-			};
-
-			sidrClose = function() {
-				menuButton.toggleClass( 'activated' ).attr( 'aria-expanded', false );
-				siteContainer.off( 'click.CloseSidr' );
-				// Remove the toggle button keydown event.
-				menuButton.off( 'keydown.sidrNav' );
-			};
-
-			$(document).ready(function() {
-		
-			  var filter = $('#filters li a');
-			  filter.on('click', function(e) {
-			  	e.preventDefault();
-			  	console.log(this);
-			    $('#filters').find('.selected').removeClass('selected');
-			  	$(this).addClass('selected');
-			  });
-			   
-			});
-			
-			$(document).ready(function() {
-				
-			  var menuToggle = $('#js-centered-navigation-mobile-menu').unbind();
-			  $('#js-centered-navigation-menu').removeClass('show');
-			  
-			  menuToggle.on('click', function(e) {
-			    e.preventDefault();
-			    $('#js-centered-navigation-menu').slideToggle(function(){
-			      if($('#js-centered-navigation-menu').is(':hidden')) {
-			        $('#js-centered-navigation-menu').removeAttr('style');
-			      }
-			    });
-			  });
-			});
+			//* Switch the menu side if a RTL langauge is in use.
+			if ( $( 'body' ).hasClass( 'rtl' ) ) {
+				menuSide = 'left';
+			}
 
 			//* Sidr menu init.
-			menuButton.sidr( {
-				name:     name,
+			$( '#responsive-menu-button' ).sidr({
+				name: 'sidr-main',
 				renaming: false,
-				side:     menuSide,
-				source:   menuSelectors.toString(),
-				onOpen:   sidrOpen,
-				onClose:  sidrClose
+				side: menuSide,
+				source: menuSelectors.toString(),
+				onOpen: function() {
+					$( '#responsive-menu-button' ).attr( 'aria-pressed', function() {
+						return 'true';
+					});
+					$( '#responsive-menu-button' ).toggleClass( 'activated' );
+					$( '.site-container' ).on( 'click.wpscCloseSidr', function() {
+						$.sidr( 'close', 'sidr-main' );
+						event.preventDefault();
+					});
+				},
+				onClose: function() {
+					$( '#responsive-menu-button' ).attr( 'aria-pressed', function() {
+						return 'false';
+					});
+					$( '#responsive-menu-button' ).toggleClass( 'activated' );
+					$( '.site-container' ).off( 'click.wpscCloseSidr' );
+				}
 			});
 
 			//* Close sidr menu if open on larger screens
-			$window.resize(function() {
-				if ( window.innerWidth >= 1024 ) {
+			$( window ).resize(function() {
+				if( window.innerWidth > 1023 ) {
 					$.sidr('close', 'sidr-main');
-					menuButton.attr( 'aria-expanded', false );
+					$( '#responsive-menu-button' ).attr( 'aria-pressed', function() {
+						return 'false';
+					});
 				}
 			});
+		},
+
+		//* FitVids Init
+		loadFitVids: function() {
+			if ( $.fn.fitVids ) {
+				$( '#site-inner' ).fitVids();
+			}
 		}
 
 	});
 
 	// Document ready.
 	jQuery(function() {
-		compass.globalInit();
-		compass.mobileMenu();
+		compass.skipLinks();
+		compass.mobileNav();
+		compass.loadFitVids();
+		jQuery( document ).gamajoAccessibleMenu();
 	});
 })( this, jQuery );
+
+// jQuery(document).gamajoAccessibleMenu();

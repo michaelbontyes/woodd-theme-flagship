@@ -63,15 +63,15 @@ $menu-header-border-color:       $base-border-color;
 $menu-header-color:              $light-gray;
 $menu-header-hover-color:        $base-link-color;
 
-$primary-background-color:  $nav-background-color;
-$primary-border-color:      $base-border-color;
-$primary-link-color:        lighten($nav-link-color, 10);
-$primary-link-hover-color:  $base-link-color;
+$after-header-background-color:  $nav-background-color;
+$after-header-border-color:      $base-border-color;
+$after-header-link-color:        lighten($nav-link-color, 10);
+$after-header-link-hover-color:  $base-link-color;
 
 $menu-button-background-color:   $base-button-background-color;
 $menu-button-link-color:         $white;
 $sidr-background-color:          lighten($off-black, 3);
-$sidr-border-color:              rgba(255, 255, 255, 0.1);
+$sidr-border-color:              rgba(255, 255, 255, .1);
 $sidr-color:                     lighten($nav-link-color, 30);
 $sidr-hover-color:               $base-link-color;
 $sidr-subnav-color:              lighten($nav-link-color, 15);
@@ -118,11 +118,10 @@ $corner-ribbon-font-color:          $white;
 $gallery-caption-background-color:  $off-black;
 $gallery-caption-font-color:        $white;
 
-//* Flagship Colors
+//* Author Box Colors
 //------------------------------------------------------------------------------
-$intro-paragraph-border-color: $light-fog;
-$author-box-background-color:      $white;
-$author-box-border-color:          $base-border-color;
+$author-box-background-color: $white;
+$author-box-border-color:     $base-border-color;
 
 //* Icon Colors
 //------------------------------------------------------------------------------
@@ -151,6 +150,17 @@ $allowed-tags-background-color:              $light-fog;
 $widget-background-color:  $white;
 $widget-link-color:        $medium-gray;
 
+//* eNews Widget Colors
+//------------------------------------------------------------------------------
+$enews-background-color:               $cta-background-color;
+$enews-font-color:                     $light-fog;
+$enews-title-color:                    $white;
+$enews-border-color:                   $off-black;
+$enews-button-background-color:        $base-button-background-color;
+$enews-button-font-color:              $base-button-font-color;
+$enews-button-background-hover-color:  $base-button-background-hover-color;
+$enews-button-font-hover-color:        $base-button-font-hover-color;
+
 //* Footer Widgets Colors
 //------------------------------------------------------------------------------
 $footer-widgets-background-color:               $dark-gray;
@@ -168,7 +178,6 @@ $footer-widgets-button-font-hover-color:        $base-button-font-hover-color;
 //* Footer Colors
 //------------------------------------------------------------------------------
 $footer-background-color:  $white;
-$footer-font-color:        $base-font-color;
 $footer-border-color:      $base-border-color;
 $footer-link-color:        $base-link-color;
 $footer-link-hover-color:  $base-link-hover-color;

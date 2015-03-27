@@ -30,17 +30,16 @@
 }
 
 .corner-ribbon {
-	@include size(85px);
 	overflow: hidden;
 	position: absolute;
 	right: -1px;
+	@include size($corner-ribbon-size);
 	top: -1px;
 
 	.ribbon-content {
-		@include transform(rotate(45deg));
 		background-color: $corner-ribbon-background-color;
 		color: $corner-ribbon-font-color;
-		font-size: $secondary-font-size - 2px;
+		font-size: .8em;
 		font-weight: 800;
 		margin: 0;
 		position: relative;
@@ -48,6 +47,7 @@
 		left: -5px;
 		text-align: center;
 		top: 15px;
+		@include transform(rotate(45deg));
 		width: 120px;
 	}
 }
@@ -88,7 +88,7 @@
 
 	blockquote {
 		border-left: 7px solid $blockquote-border-color;
-		margin: 30px 0;
+		margin: 30px 0 30px 5%;
 		padding: 0 5%;
 	}
 
@@ -155,6 +155,7 @@
 	}
 
 	a {
+		border-bottom: 1px solid $entry-meta-link-border-color;
 		color: $entry-meta-link-color;
 
 		&:hover,
@@ -162,6 +163,10 @@
 			color: $entry-meta-link-hover-color;
 		}
 	}
+}
+
+span.comments-link {
+	display: none;
 }
 
 .entry-header .entry-meta {
@@ -172,10 +177,7 @@
 
 	.entry-meta {
 		margin: 0;
-
-		&:last-of-type {
-			padding: 0 0 26px;
-		}
+		padding: 0 0 26px;
 	}
 
 	.entry-terms {

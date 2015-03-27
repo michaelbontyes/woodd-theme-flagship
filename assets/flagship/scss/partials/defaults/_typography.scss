@@ -5,6 +5,7 @@ body {
 	font-size: $secondary-font-size;
 	font-weight: 400;
 	line-height: $base-line-height;
+	margin: 0;
 	-webkit-font-smoothing: antialiased;
 
 	@include media($small-screen-up) {
@@ -20,7 +21,12 @@ input[type="reset"],
 input[type="submit"],
 textarea:focus,
 .button {
-	@include transition(all, 0.1s, ease-in-out);
+	@include transition(all, .1s, ease-in-out);
+}
+
+::-moz-selection {
+	background-color: $base-selection-background-color;
+	color: $base-selection-color;
 }
 
 ::selection {
@@ -29,7 +35,7 @@ textarea:focus,
 }
 
 a {
-	@include transition(color 0.1s linear);
+	@include transition(color .1s linear);
 	color: $base-link-color;
 	text-decoration: none;
 
@@ -61,18 +67,17 @@ hr {
 }
 
 pre {
+	position: relative;
 	background: $base-background-color;
 	border: 1px solid darken($base-border-color, 5);
 	color: $base-heading-color;
 	font-family: $monospace;
 	font-size: $secondary-font-size;
 	margin-bottom: 26px;
-	max-width: 100%;
-	overflow: auto;
 	padding: 3% 10% 3% 5%;
-	position: relative;
+	overflow: auto;
+	max-width: 100%;
 	tab-size: 4;
-	white-space: pre-wrap;
 }
 
 code,
@@ -114,7 +119,7 @@ sup {
 }
 
 sub {
-	top: 0.5ex;
+	top: .5ex;
 }
 
 small {
@@ -142,6 +147,16 @@ blockquote {
 	font-style: italic;
 	margin: 40px;
 
+	&::before {
+		content: '\201C';
+		display: block;
+		font-size: 30px;
+		height: 0;
+		left: -20px;
+		position: relative;
+		top: -10px;
+	}
+
 	cite {
 		display: block;
 		font-family: $base-font-family;
@@ -149,7 +164,7 @@ blockquote {
 		margin-top: 15px;
 
 		&::before {
-			content: "\2014";
+			content: '\2014';
 			padding-right: 10px;
 		}
 	}
@@ -165,9 +180,9 @@ h4,
 h5,
 h6 {
 	color: $base-heading-color;
-	font-family: $heading-font-family;
+	font-family: $header-font-family;
 	font-weight: 400;
-	line-height: $heading-line-height;
+	line-height: $header-line-height;
 	margin: 0 0 10px;
 	text-rendering: optimizeLegibility; // Fix the character spacing for headings
 }

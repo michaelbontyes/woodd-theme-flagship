@@ -1,6 +1,6 @@
 .nav-menu {
 	clear: both;
-	font-size: 0.001px;
+	font-size: .001px;
 	line-height: 1;
 	width: 100%;
 
@@ -99,18 +99,10 @@
 	}
 }
 
-/* Primary Navigation
+/* Header Navigation
 --------------------------------------------- */
 
-.site-header .menu-primary {
-	@include media($medium-screen-up) {
-		@include span-columns(9);
-		float: right;
-		text-align: right;
-	}
-}
-
-.menu-primary {
+.menu-header {
 	display: none;
 
 	@include media($medium-screen-up) {
@@ -146,18 +138,17 @@
 	padding: 12px 0;
 
 	.button {
-		padding: 8px 20px;
-		margin: 8px 0 8px 20px;
+		margin-left: 20px;
 	}
 }
 
 
-/* Secondary Navigation
+/* After Header Navigation
 --------------------------------------------- */
 
-.menu-secondary {
-	background-color: $primary-background-color;
-	border-bottom: 1px solid $primary-border-color;
+.menu-after-header {
+	background-color: $after-header-background-color;
+	border-bottom: 1px solid $after-header-border-color;
 	display: none;
 
 	@include media($medium-screen-up) {
@@ -165,7 +156,7 @@
 	}
 
 	li > a {
-		color: $primary-link-color;
+		color: $after-header-link-color;
 	}
 
 	li > a:hover,
@@ -173,7 +164,7 @@
 	.current-menu-item > a,
 	.sub-menu .current-menu-item > a:hover,
 	.sub-menu .current-menu-item > a:focus {
-		color: $primary-link-hover-color;
+		color: $after-header-link-hover-color;
 	}
 }
 
@@ -181,7 +172,6 @@
 --------------------------------------------- */
 
 .menu-button {
-	@include transition (all 0.2s ease-in-out);
 	display: block;
 	float: right;
 	margin: 17px 0 0;
@@ -189,20 +179,15 @@
 	color: $menu-button-link-color;
 	background: $menu-button-background-color;
 	border-radius: $base-border-radius;
+	@include transition (all .2s ease-in-out);
 	cursor: pointer;
 
 	@include media($medium-screen-up) {
 		display: none;
 	}
 
-	&:hover,
-	&:focus,
-	&:active {
+	&:hover {
 		background: lighten($menu-button-background-color, 5%);
-
-		@include media($medium-screen-up) {
-			display: none;
-		}
 	}
 
 	&::before {
@@ -211,15 +196,16 @@
 }
 
 .sidr {
-	background: $sidr-background-color;
 	display: none;
-	height: 100%;
-	overflow-x: hidden;
-	overflow-y: auto;
+	position: absolute;
 	position: fixed;
 	top: 0;
-	width: 260px;
+	height: 100%;
 	z-index: $sidr-z-index;
+	width: 260px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	background: $sidr-background-color;
 
 	&.right {
 		/* @noflip */
@@ -241,46 +227,172 @@
 		}
 
 		li a {
-			border-bottom: 1px solid $sidr-border-color;
 			color: $sidr-color;
 			padding: $sidr-item-padding;
-		}
+			border-bottom: 1px solid $sidr-border-color;
 
-		li a:hover,
-		li a:focus {
-			background: lighten($sidr-background-color, 3);
-			color: $sidr-hover-color;
+			&:hover {
+				color: $sidr-hover-color;
+				background: lighten($sidr-background-color, 3);
+			}
 		}
 	}
 
-	.sub-menu,
-	.sub-menu .sub-menu {
-		background: transparent;
-		border-top: 0;
-		box-shadow: none;
-		margin: 0;
-		opacity: 1;
+	.sub-menu {
 		position: static;
 		width: 100%;
+		margin: 0;
+		background: transparent;
+		border-top: 0;
+		opacity: 1;
+		box-shadow: none;
 
 		li a {
-			background: $sidr-background-color;
-			border: 0;
-			border-bottom: 1px solid $sidr-border-color;
-			color: $sidr-subnav-color;
+			width: auto;
 			padding: $sidr-item-padding;
 			padding-left: $sidr-item-padding + 10px;
-			width: auto;
+			color: $sidr-subnav-color;
+			background: $sidr-background-color;
+			border-bottom: 1px solid $sidr-border-color;
+			border-top: 0;
+			border-left: 0;
+			border-right: 0;
 		}
 
-		li a:hover,
-		li a:focus {
-			background: lighten($sidr-background-color, 3);
-			color: $sidr-hover-color;
+		.sub-menu {
+			margin: 0;
+
+			li a {
+				padding-left: $sidr-item-padding + 20px;
+			}
 		}
 	}
+}
 
-	.sub-menu .sub-menu li a {
-		padding-left: $sidr-item-padding + 20px;
+
+/* Pagination
+--------------------------------------------- */
+
+.pagination {
+	margin-bottom: 20px;
+	text-align: center;
+	display: block;
+
+	.page-numbers {
+		@include transition (all .2s ease-in-out);
+		background: $pagination-background-color;
+		border: 1px solid $pagination-border-color;
+		border-radius: $base-border-radius;
+		display: inline-block;
+		margin-bottom: 10px;
+		padding: 10px 20px;
+	}
+
+	.current {
+		background: $pagination-current-background-color;
+	}
+
+	.next:before {
+		content: '\2192';
+	}
+
+	.prev:before {
+		content: '\2190';
+	}
+
+	a {
+		color: $pagination-link-color;
+
+		&:hover,
+		&:focus {
+			background: $pagination-background-hover-color;
+			border: 1px solid $pagination-border-hover-color;
+		}
+	}
+}
+
+.rtl {
+	.pagination .next:before {
+		content: '\2190';
+	}
+
+	.pagination .prev:before {
+		content: '\2192';
+	}
+}
+
+/* Single Entry Pagination
+--------------------------------------------- */
+
+.nav-single {
+	display: block;
+	clear: both;
+	overflow: hidden;
+	margin-bottom: 20px;
+	padding: 0;
+	font-size: $pagination-font-size;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+
+	.nav-next a,
+	.nav-previous a {
+		background: $nav-single-background-color;
+		border-radius: $base-border-radius;
+		border: 1px solid $nav-single-border-color;
+		color: $nav-single-link-color;
+		display: block;
+		margin: 0 0 10px;
+		padding: 16px 20px 14px;
+		text-align: center;
+	}
+
+	.nav-next a:hover,
+	.nav-previous a:hover,
+	.nav-next a:focus,
+	.nav-previous a:focus {
+		background: $nav-single-background-hover-color;
+		color: $nav-single-link-color;
+	}
+
+	@include media($medium-screen-up) {
+		.nav-previous {
+			float: left;
+		}
+
+		.nav-next {
+			float: right;
+		}
+	}
+}
+
+/* Page Links
+--------------------------------------------- */
+
+.page-links {
+	margin: 30px 0;
+	display: block;
+
+	span,
+	a {
+		@include transition (all .2s ease-in-out);
+		border-radius: $base-border-radius;
+		display: inline-block;
+		padding: 5px 15px;
+		border: 1px solid $page-links-border-color;
+		color: $page-links-link-color;
+	}
+
+	span {
+		background: $page-links-current-background-color;
+	}
+
+	a {
+		background: $page-links-background-color;
+
+		&:hover,
+		&:focus {
+			background: $page-links-background-hover-color;
+			color: $page-links-link-color;
+		}
 	}
 }

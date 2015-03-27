@@ -1,26 +1,41 @@
-/* Gravity Forms
+/* Genesis eNews Extended
 --------------------------------------------- */
-div.gform_wrapper {
 
-	input[type="email"],
-	input[type="text"],
-	textarea,
-	.ginput_complex label {
-		font-size: $base-font-size;
-		padding: 16px;
+.enews-widget {
+	color: $enews-font-color;
+
+	.widget-title {
+		color: $enews-title-color;
 	}
 
-	.ginput_complex label {
-		padding: 0;
+	input,
+	input:hover,
+	input:focus {
+		border-color: $enews-border-color;
 	}
 
-	li,
-	form li {
-		margin: 16px 0 0;
-	}
-
-	.gform_footer input[type=submit] {
+	input {
 		font-size: $secondary-font-size;
-		padding: 16px 24px;
+		margin-bottom: 16px;
 	}
+
+	input[type="submit"] {
+		background-color: $enews-button-background-color;
+		color: $enews-button-font-color;
+		margin: 0;
+		width: 100%;
+	}
+
+	input:hover[type="submit"] {
+		background-color: $enews-button-background-hover-color;
+		color: $enews-button-font-hover-color;
+	}
+}
+
+.sidebar .widget.enews-widget {
+	background-color: $enews-background-color;
+}
+
+.enews form + p {
+	margin-top: 24px;
 }

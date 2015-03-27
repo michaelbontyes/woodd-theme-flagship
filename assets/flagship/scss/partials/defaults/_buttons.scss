@@ -8,7 +8,6 @@ input[type="submit"],
 	border-radius: $base-border-radius;
 	color: $base-button-font-color;
 	cursor: pointer;
-	display: inline-block;
 	font-size: $secondary-font-size;
 	font-weight: 400;
 	padding: 16px 24px;
@@ -18,12 +17,12 @@ input[type="submit"],
 
 button:hover,
 button:focus,
-input[type="button"]:hover,
-input[type="button"]:focus,
-input[type="reset"]:hover,
-input[type="reset"]:focus,
-input[type="submit"]:hover,
-input[type="submit"]:focus,
+input:hover[type="button"],
+input:focus[type="button"],
+input:hover[type="reset"],
+input:focus[type="reset"],
+input:hover[type="submit"],
+input:focus[type="submit"],
 .button:hover,
 .button:focus {
 	background-color: $base-button-background-hover-color;
@@ -34,4 +33,8 @@ input[type="submit"]:focus,
 .entry-content .button:hover,
 .entry-content .button:focus {
 	color: $base-button-font-hover-color;
+}
+
+.button {
+	display: inline-block;
 }

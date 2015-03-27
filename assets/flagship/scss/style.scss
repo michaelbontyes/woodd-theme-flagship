@@ -23,10 +23,8 @@
 		- Avatar
 		- WordPress
 		- Screen Readers
-	- Flagship Styles
-		- Author Boxes
-	- Flagicons
-	- Theme Icons
+	- Genericons
+		- Theme Icons
 	- Header
 		- Title Area
 		- Widget Area
@@ -39,12 +37,6 @@
 		- Entries
 		- Entry Meta
 		- Featured Media
-	- Pagination
-		- Loop Pagination
-		- Single Post Pagination
-		- Page Links
-		- Loop Page Links
-		- Single Page Links
 	- Comments
 	- Widgets
 		- Featured Content
@@ -52,125 +44,116 @@
 	- Footer Widgets
 	- Footer
 	- Plugins
+		- eNews Extended
+		- Latest Tweets
 		- Gravity Forms
 		- Jetpack
 
 */
 // Load Bourbon
-@import "bourbon";
+@import '../../bower/bourbon/bourbon';
 
 // Load Neat Grid
-@import "variables/neat-grid";
-@import "neat";
+@import 'variables/neat-grid';
+@import '../../bower/neat/neat';
 
 // Load Global Variables
-@import "variables/colors";
-@import "variables/layout";
-@import "variables/misc";
-@import "variables/typography";
-@import "variables/z-index";
+@import 'variables/colors';
+@import 'variables/layout';
+@import 'variables/misc';
+@import 'variables/typography';
+@import 'variables/z-index';
 
 /*
 HTML5 Reset
 ----------------------------------------------------------------------------- */
-@import "../../bower/wp-normalize/wp-normalize";
+@import '../../bower/normalize/normalize';
+@import 'partials/reset';
 
 
 /*
 Defaults
 ----------------------------------------------------------------------------- */
-@import "partials/defaults/base";
+@import 'partials/defaults/base';
 
 
 /*
 Structure and Layout
 ----------------------------------------------------------------------------- */
-@import "partials/base-layout";
-
-/*
-Flagicons
------------------------------------------------------------------------------ */
-@import "generated/flagicons";
+@import 'partials/base-layout';
 
 
 /*
 Common Classes
 ----------------------------------------------------------------------------- */
-@import "partials/common-classes";
+@import 'partials/common-classes';
 
 
 /*
-Flagship Styles
+Genericons
 ----------------------------------------------------------------------------- */
-@import "partials/flagship";
-
-
-/*
-Theme Icons
------------------------------------------------------------------------------ */
-@import "partials/theme-icons";
+@import 'partials/genericons';
 
 
 /*
 Site Header
 ----------------------------------------------------------------------------- */
-@import "partials/header";
+@import 'partials/header';
 
 
 /*
 Site Navigation
 ----------------------------------------------------------------------------- */
-@import "partials/navigation";
+@import 'partials/navigation';
 
 
 /*
 Content Area
 ----------------------------------------------------------------------------- */
-@import "partials/content-area";
+@import 'partials/content-area';
 
 
-/*
-Pagination
+/* Comments
 ----------------------------------------------------------------------------- */
-@import "partials/pagination";
 
-
-/*
-Comments
------------------------------------------------------------------------------ */
-@import "partials/comments";
+@import 'partials/comments';
 
 
 /*
 Widgets
 ----------------------------------------------------------------------------- */
-@import "partials/widgets";
+@import 'partials/widgets';
 
 
 /*
 Sidebars
 ----------------------------------------------------------------------------- */
-@import "partials/sidebars";
+@import 'partials/sidebars';
 
 
 /*
 Footer Widgets
 ----------------------------------------------------------------------------- */
-@import "partials/footer-widgets";
+@import 'partials/footer-widgets';
 
 
 /*
 Site Footer
 ----------------------------------------------------------------------------- */
-@import "partials/footer";
+@import 'partials/footer';
 
 
 /*
 Plugins
 ----------------------------------------------------------------------------- */
-@import "partials/plugins";
+@import 'partials/plugins';
+
+
+/* Gravity Forms
+--------------------------------------------- */
+@import 'partials/gravity-forms';
 
 
 /* Jetpack
 --------------------------------------------- */
-@import "partials/jetpack";
+@import 'partials/jetpack';

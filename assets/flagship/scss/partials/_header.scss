@@ -1,4 +1,4 @@
-.site-header {
+.header {
 	background-color: $header-background-color;
 	color: $header-font-color;
 	padding-left: 5%;
@@ -9,7 +9,7 @@
 		padding-right: 0;
 	}
 
-	> .wrap {
+	.wrap {
 		padding: 20px 0;
 	}
 }
@@ -17,15 +17,15 @@
 /* Title Area
 --------------------------------------------- */
 
-.site-branding {
+.branding {
 	float: none;
 	margin-right: 0;
 	padding: 10px 0;
 	width: auto;
 
 	@include media($medium-screen-up) {
-		@include span-columns(3);
 		float: left;
+		@include span-columns(3);
 	}
 }
 
@@ -60,9 +60,9 @@
 --------------------------------------------- */
 
 .header-right {
-	@include span-columns(9);
 	float: right;
 	text-align: right;
+	@include span-columns(9);
 
 	.widget {
 		margin: 0;

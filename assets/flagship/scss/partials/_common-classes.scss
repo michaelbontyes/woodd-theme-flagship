@@ -1,25 +1,46 @@
-/* Hybrid Core
+/* Flagship
 --------------------------------------------- */
 
 .breadcrumbs {
-	font-size: $secondary-font-size;
 	margin-bottom: 15px;
-
-	.sep {
-		padding: 0 4px;
-	}
 }
 
-.loop-meta {
+.loop-meta,
+.author-box {
 	margin-bottom: 30px;
+}
 
-	p:last-child {
-		margin-bottom: 0;
+.author-box {
+	background: $author-box-background-color;
+	border: 1px solid $author-box-border-color;
+	padding: 20px;
+
+	.social-icons {
+		display: block;
+		padding-top: 26px;
+
+		li {
+			display: inline-block;
+			margin: 0 5px 5px;
+		}
+	}
+
+	@include media($small-screen-up) {
+		padding: 40px;
 	}
 }
 
-.loop-title {
-	font-size: $loop-title-size;
+.author-box-title {
+	margin-bottom: 4px;
+}
+
+.loop-meta p:last-child,
+.author-box p:last-child {
+	margin-bottom: 0;
+}
+
+.archive-title {
+	font-size: $archive-title-size;
 	font-weight: 600;
 }
 
@@ -27,8 +48,8 @@
 --------------------------------------------- */
 
 .search-form {
-	display: block;
 	position: relative;
+	display: block;
 
 	input[type=search] {
 		@include appearance(none);
@@ -65,6 +86,7 @@
 	}
 
 	input[type="password"] {
+		display: block;
 		margin-bottom: 20px;
 	}
 }
@@ -103,8 +125,8 @@
 	}
 }
 
-.alignleft,
-.alignright {
+a.alignleft,
+a.alignright {
 	max-width: 100%;
 }
 
@@ -145,14 +167,14 @@ img.alignright,
 
 .off-screen,
 .screen-reader-text {
-	border: 0;
-	clip: rect(0 0 0 0);
-	height: 1px;
-	margin: -1px;
-	overflow: hidden;
-	padding: 0;
 	position: absolute;
+	margin: -1px;
+	padding: 0;
+	height: 1px;
 	width: 1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	border: 0;
 
 	&:focus {
 		outline: 0;

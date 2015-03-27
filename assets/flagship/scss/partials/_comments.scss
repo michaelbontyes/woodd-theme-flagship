@@ -44,6 +44,7 @@
 	padding-bottom: 15px;
 
 	a {
+		border-bottom: 1px solid $comment-meta-link-border-color;
 		color: $comment-meta-link-color;
 
 		&:hover,
@@ -156,17 +157,15 @@
 			margin-right: -20px;
 			margin-top: 20px;
 
+			&:last-child {
+				margin-bottom: 0;
+			}
+
 			@include media($small-screen-up) {
 				margin-right: -30px;
 				margin-top: 30px;
 			}
-
 		}
-
-		.comment:last-child {
-			margin-bottom: 0;
-		}
-
 	}
 }
 

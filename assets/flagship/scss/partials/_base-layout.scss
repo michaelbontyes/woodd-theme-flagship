@@ -16,7 +16,7 @@
 .wrap {
 	margin-left: auto;
 	margin-right: auto;
-	max-width: $base-wrap-max-width;
+	max-width: 768px;
 	padding-left: 5%;
 	padding-right: 5%;
 
@@ -26,11 +26,11 @@
 	}
 
 	@include media($medium-screen-up) {
-		max-width: $wrap-max-width-medium;
+		max-width: 960px;
 	}
 
 	@include media($large-screen-up) {
-		max-width: $wrap-max-width-large;
+		max-width: 1140px;
 	}
 }
 
@@ -56,8 +56,8 @@
 	}
 
 	.layout-2c-r .content {
-		@include omega();
 		float: right;
+		@include omega();
 	}
 
 	/* Primary Sidebar
@@ -67,8 +67,8 @@
 	}
 
 	.layout-2c-l .sidebar {
-		@include omega();
 		float: right;
+		@include omega();
 	}
 
 	/* Secondary Sidebar
@@ -78,8 +78,8 @@
 	}
 
 	.content-sidebar-sidebar .sidebar-secondary {
-		@include omega();
 		float: right;
+		@include omega();
 	}
 }
 
@@ -126,7 +126,7 @@
 	}
 
 	.last {
-		@include omega();
 		clear: right;
+		@include omega();
 	}
 }

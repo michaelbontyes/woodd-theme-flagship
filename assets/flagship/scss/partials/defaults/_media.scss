@@ -15,8 +15,8 @@ img {
 
 a:hover img,
 a:focus img {
-	@include transition(opacity 0.2s ease-in-out);
-	opacity: 0.9;
+	@include transition (opacity .2s ease-in-out);
+	opacity: .9;
 }
 
 .featured-content img,
@@ -32,13 +32,32 @@ a:focus img {
 }
 
 .gallery-item {
-	line-height: 0;
 	list-style: none;
 	margin: 0 0 2.35765%;
 	overflow: hidden;
 	padding: 0;
 	position: relative;
 	text-align: center;
+
+	.gallery-caption {
+		background: transparentize($gallery-caption-background-color, .5);
+		color: $gallery-caption-font-color;
+		font-size: $gallery-caption-font-size;
+		max-height: 50%;
+		opacity: 0;
+		overflow: hidden;
+		padding: 10px;
+		position: absolute;
+		@include transition(all, .2s ease-in-out);
+		visibility: hidden;
+		width: 100%;
+	}
+
+	&:hover .gallery-caption {
+		visibility: visible;
+		opacity: 1;
+		@include transform(translate(0, -100%));
+	}
 
 	@include media($small-screen-up) {
 
@@ -106,28 +125,6 @@ a:focus img {
 			@include omega(9n);
 		}
 	}
-
-	.gallery-caption {
-		@include transition(all, 0.2s ease-in-out);
-		background: transparentize($gallery-caption-background-color, 0.5);
-		color: $gallery-caption-font-color;
-		font-size: $gallery-caption-font-size;
-		line-height: 1.65;
-		max-height: 50%;
-		opacity: 0;
-		overflow: hidden;
-		padding: 10px;
-		position: absolute;
-		visibility: hidden;
-		width: 100%;
-	}
-
-	&:hover .gallery-caption {
-		@include transform(translate(0, -100%));
-		visibility: visible;
-		opacity: 1;
-	}
-
 }
 
 .gallery-icon a {
