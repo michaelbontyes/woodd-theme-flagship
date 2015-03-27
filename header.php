@@ -34,23 +34,39 @@
 
 		<?php tha_header_before(); ?>
 
-		<header <?php hybrid_attr( 'header' ); ?>>
-
-			<div <?php hybrid_attr( 'wrap', 'header' ); ?>>
-
-				<?php tha_header_top(); ?>
-
-				<div <?php hybrid_attr( 'branding' ); ?>>
-					<?php flagship_the_logo(); ?>
-					<?php hybrid_site_title(); ?>
-					<?php hybrid_site_description(); ?>
-				</div><!-- #branding -->
-
-				<?php hybrid_get_menu( 'primary' ); ?>
-
-				<?php tha_header_bottom(); ?>
-
+		<header class="centered-navigation" role="banner">
+			<div class="hero">
+				<div class="hero-inner">
+					<div class="hero-copy">
+						<p><h4>- <strong>Woodd.</strong></b> Exploration d'Idées -</h4></p>	
+					</div>
+				</div>
 			</div>
+
+			  <div class="centered-navigation-wrapper">
+			    <a href="javascript:void(0)" id="js-centered-navigation-mobile-menu" class="centered-navigation-mobile-menu">MENU</a>
+			    <nav role="navigation">
+			      <ul id="js-centered-navigation-menu" class="centered-navigation-menu show">
+			      	<?php 
+			      	$defaults = array(
+							'menu'            => 'Navigation',
+							'walker' => new description_walker()
+							);
+							wp_nav_menu( $defaults );
+						 	?>
+			      </ul>
+			    </nav>
+			  </div>
+			  
+			  <nav class="js-menu sliding-menu-content is-visible">
+				  <ul>
+				    <li><a href="//twitter.com/wooddjournal"><span class="dashicons dashicons-twitter"></span></a></li>
+				    <li><a href="//www.facebook.com/wooddjournal"><span class="dashicons dashicons-facebook-alt"></span></a></li>
+				    <!--<li class="button-search"><a href="javascript:void(0)"><span class="dashicons dashicons-search"></span></a></li>-->
+				    <!--<li class="sidebar-search"><?php get_search_form(); ?></li>-->
+				  </ul>
+				</nav>
+
 
 		</header><!-- #header -->
 

@@ -22,14 +22,12 @@
 			<div <?php hybrid_attr( 'wrap', 'footer' ); ?>>
 
 				<p class="credit">
+					
 					<?php
 					printf(
-						// Translators: 1 is current year, 2 is site name/link, 3 is WordPress name/link, and 4 is theme developer.
-						__( 'Copyright &#169; %1$s %2$s. Built on the %3$s starter theme by %4$s.', 'compass' ),
-						date_i18n( 'Y' ),
+						__( '<h6>%1$s %2$s</h6>', 'woodd' ),
 						hybrid_get_site_link(),
-						'<a class="theme-link" href="https://flagshipwp.com/compass/">Compass</a>',
-						flagship_get_credit_link()
+						date_i18n( 'Y' )
 					);
 					?>
 				</p><!-- .credit -->
@@ -39,6 +37,7 @@
 			<?php tha_footer_bottom(); ?>
 
 		</footer><!-- .footer -->
+
 
 		<?php tha_footer_after(); ?>
 

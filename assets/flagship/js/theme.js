@@ -102,6 +102,33 @@ window.compass = window.compass || {};
 				menuButton.off( 'keydown.sidrNav' );
 			};
 
+			$(document).ready(function() {
+		
+			  var filter = $('#filters li a');
+			  filter.on('click', function(e) {
+			  	e.preventDefault();
+			  	console.log(this);
+			    $('#filters').find('.selected').removeClass('selected');
+			  	$(this).addClass('selected');
+			  });
+			   
+			});
+			
+			$(document).ready(function() {
+				
+			  var menuToggle = $('#js-centered-navigation-mobile-menu').unbind();
+			  $('#js-centered-navigation-menu').removeClass('show');
+			  
+			  menuToggle.on('click', function(e) {
+			    e.preventDefault();
+			    $('#js-centered-navigation-menu').slideToggle(function(){
+			      if($('#js-centered-navigation-menu').is(':hidden')) {
+			        $('#js-centered-navigation-menu').removeAttr('style');
+			      }
+			    });
+			  });
+			});
+
 			//* Sidr menu init.
 			menuButton.sidr( {
 				name:     name,
