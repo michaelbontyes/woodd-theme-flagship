@@ -1,0 +1,49 @@
+{
+  "name": "woodd",
+  "capitalname": "Woodd",
+  "version": "1.1.0",
+  "copyright": "2015",
+  "license": "GPL-2.0+",
+  "private": true,
+  "bugs": {
+    "url": "https://woodd.org",
+    "email": "info@woodd.org"
+  },
+  "contributors": [
+    {
+      "name": "Michael Bontyes",
+      "url": "https://woodd.org"
+    }
+  ],
+  "theme": {
+    "name": "Woodd",
+    "uri": "https://woodd.org",
+    "description": "Built with Hybrid Core, Theme Hook Alliance, Bourbon, and Neat.",
+    "author": "Michael Bontyes",
+    "authoruri": "https://woodd.org",
+    "tags": "white, light, one-column, two-columns, right-sidebar, responsive-layout, custom-header, custom-menu, editor-style, featured-images, 'seo-friendly', microformats, post-formats, sticky-post, translation-ready",
+    "license": "GPL-2.0+",
+    "licenseuri": "http://www.gnu.org/licenses/gpl-2.0.html",
+    "textdomain": "woodd",
+    "domainpath": "/languages"
+  },
+  "pot": {
+    "reportmsgidbugsto": "Robert Neu <translations@flagshipwp.com>",
+    "lasttranslator": "Robert Neu <translations@flagshipwp.com>",
+    "languageteam": "Robert Neu <translations@flagshipwp.com>"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FlagshipWP/compass.git"
+  },
+  "devDependencies": {
+    "flagship-wp-theme-config": "FlagshipWP/flagship-wp-theme-config",
+    "grunt-bowercopy": "^1.2.0",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-copy": "^0.8.0",
+    "grunt-contrib-rename": "0.0.3",
+    "grunt-replace": "^0.8.0",
+    "grunt-webfont": "^0.5.2",
+    "load-flagship-grunt-config": "FlagshipWP/load-flagship-grunt-config"
+  }
+}
