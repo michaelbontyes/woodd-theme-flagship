@@ -1,48 +1,34 @@
 {
-  "name": "compass",
-  "capitalname": "Compass",
+  "name": "woodd",
+  "capitalname": "Woodd",
   "version": "1.0.0",
   "copyright": "2014",
   "license": "GPL-2.0+",
   "private": true,
   "bugs": {
-    "url": "http://flagshipwp.com/support",
-    "email": "support@flagshipwp.com"
+    "url": "http://woodd.org"
   },
   "contributors": [
     {
-      "name": "Flagship",
-      "url": "http://flagshipwp.com"
-    },
-    {
-      "name": "Robert Neu",
-      "url": "http://flagshipwp.com"
-    },
-    {
-      "name": "Gary Jones",
-      "url": "http://gamajo.com"
+      "name": "Michael Bontyes",
+      "url": "http://woodd.org"
     }
   ],
   "theme": {
-    "name": "Compass",
-    "uri": "http://flagshipwp.com/themes/compass/",
-    "description": "The most advanced WordPress Starter theme ever created. Built with Hybrid Core, Theme Hook Alliance, Bourbon, and Neat.",
+    "name": "Woodd",
+    "uri": "http://woodd.org",
+    "description": "Woodd Theme",
     "author": "Flagship",
-    "authoruri": "http://flagshipwp.com",
+    "authoruri": "http://woodd.org",
     "tags": "white, light, one-column, two-columns, right-sidebar, responsive-layout, custom-header, custom-menu, editor-style, featured-images, 'seo-friendly', microformats, post-formats, sticky-post, translation-ready",
     "license": "GPL-2.0+",
     "licenseuri": "http://www.gnu.org/licenses/gpl-2.0.html",
-    "textdomain": "compass",
+    "textdomain": "woodd",
     "domainpath": "/languages"
-  },
-  "pot": {
-    "reportmsgidbugsto": "Robert Neu <translations@flagshipwp.com>",
-    "lasttranslator": "Robert Neu <translations@flagshipwp.com>",
-    "languageteam": "Robert Neu <translations@flagshipwp.com>"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/FlagshipWP/compass.git"
+    "url": "https://github.com/michaelbontyes/woodd-theme.git"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
